@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "Location Provider",
+    "name_for_model": "locationProvider",
+    "description_for_human": "Share your location with ChatGPT",
+    "description_for_model": "Plugin for providing the geolocation of the prompter",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "http://localhost:3333/openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "http://localhost:3333/logo.png",
+    "contact_email": "michael.magahey@gmail.com",
+    "legal_info_url": ""
+}

@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: Geolocation Plugin
+  version: 1.0.0
+  description: A plugin to grab the geolocation of the prompter.
+servers:
+  - url: http://localhost:3333
+paths:
+  /location:
+    get:
+      summary: Returns the geolocation of the prompter.
+      operationId: getLocation
+      responses:
+        '200':
+          description: Location of the prompter
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Country:
+                    type: string
+                  Region:
+                    type: string
+                  City:
+                    type: string
+                  Postal:
+                    type: string
+                  IP:
+                    type: string
+                  Hostname:
+                    type: string
+                  Coordinates:
+                    type: array
+                    items:
+                      type: number
+                  Organization:
+                    type: string
+                  Timezone:
+                    type: string
+        '403':
+          description: Failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  err:
+                    type: string
+                  response:
+                    type: object
+                    properties:
+                      status_code:
+                        type: integer
+                      body:
+                        type: string
+  /logo.png:
+    get:
+      summary: Returns the logo of the plugin
+      operationId: getPluginLogo
+      responses:
+        '200':
+          description: OK
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Not Found
+  /.well-known/ai-plugin.json:
+    get:
+      summary: Returns the plugin manifest
+      operationId: getPluginManifest
+      responses:
+        '200':
+          description: OK
+          content:
+            text/json:
+              schema:
+                type: object
+        '404':
+          description: Not Found
+  /openapi.yaml:
+    get:
+      summary: Returns the OpenAPI specification for the plugin API
+      operationId: getPluginOpenAPI
+      responses:
+        '200':
+          description: OK
+          content:
+            text/yaml:
+              schema:
+                type: object
+        '404':
+          description: Not Found
